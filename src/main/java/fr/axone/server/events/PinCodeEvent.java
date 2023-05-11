@@ -41,9 +41,14 @@ public class PinCodeEvent implements Listener {
         // fix ????????
         // too tash dkzdz
         Bukkit.getLogger().info(event.getReason().toString());
-        if (event.getReason() == InventoryCloseEvent.Reason.PLUGIN)
+        // fix 2023 build is trash
+        if (event.getReason() != InventoryCloseEvent.Reason.PLUGIN)
         {
-            Bukkit.getPlayer(event.getPlayer())
+            if (event.getReason() != InventoryCloseEvent.Reason.CANT_USE)
+            {
+                Bukkit.getPlayer(event.getPlayer().getName()).kick(Component.text("Please input a pin code !"));
+
+            }
         }
 
 
