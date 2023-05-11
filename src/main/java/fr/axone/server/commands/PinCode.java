@@ -4,6 +4,7 @@ import fr.axone.server.MainPlugin;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -112,11 +113,13 @@ public class PinCode implements InventoryHolder {
             }
 
             //event.getWhoClicked().sendMessage("Your code is : " + code + "t");
+            // fix gammode
             if (code.equalsIgnoreCase("123"))
             {
                 // trash build system e
                 event.getWhoClicked().sendMessage("Correct code !");
                 event.getInventory().close();
+                event.getWhoClicked().setGameMode(GameMode.SURVIVAL);
             }
             else
             {

@@ -4,6 +4,7 @@ import com.destroystokyo.paper.event.server.PaperServerListPingEvent;
 import fr.axone.server.MainPlugin;
 import fr.axone.server.commands.PinCode;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
@@ -22,7 +23,9 @@ public class ExampleEvent implements Listener {
     {
         // log this into our console !
         Bukkit.getLogger().info("Player joined " + event.getPlayer().getName() + " ! Welcome to AxoneSMP V0.1 Alpha");
+        event.getPlayer().setGameMode(GameMode.CREATIVE);
         event.getPlayer().openInventory(new PinCode(MainPlugin.myPlugin).getInventory());
+
         // send it to all players
         for (Player player : Bukkit.getOnlinePlayers())
         {
